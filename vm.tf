@@ -1,11 +1,11 @@
 # Request a spot instance at $0.03
-data "aws_ami" "debian" {
+data "aws_ami" "amazon2" {
   most_recent = true
-  owners      = ["136693071363"]
+  owners      = ["137112412989"]
 
   filter {
     name   = "name"
-    values = ["debian-11-amd64-*"]
+    values = ["amzn2-ami-hvm-2.0*"]
   }
 
   filter {
@@ -15,7 +15,7 @@ data "aws_ami" "debian" {
 }
 
 resource "aws_spot_instance_request" "awstf5_ec2" {
-  ami           = data.aws_ami.debian.id
+  ami           = data.aws_ami.amazon2.id
   instance_type = "t3.micro"
 
   associate_public_ip_address = true
